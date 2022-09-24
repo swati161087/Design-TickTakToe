@@ -1,8 +1,9 @@
 package strategies.winStrategy;
 
 import models.Board;
+import models.Cell;
 import models.Symbol;
 
 public interface WinStrategy {
-    boolean checkWin(Board board, Symbol symbol);
+    boolean checkIfWin(Board board, Cell lastMovedCell);
 }
