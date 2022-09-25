@@ -2,6 +2,7 @@ package models;
 
 import enums.GameStatus;
 import enums.PlayerType;
+import exceptions.EmptyMovesUndoOperationException;
 import exceptions.MultipleBotException;
 import models.player.Player;
 import strategies.undoStrategy.UndoStrategy;
@@ -25,30 +26,55 @@ public class Game {
         this.moves = new ArrayList<>();
         this.winStrategies = new ArrayList<>();
         this.indexOfLastMovedPlayer = -1;
-        this.gameStatus = GameStatus.NOTSTARTED;
+        this.gameStatus = GameStatus.RUNNING;
     }
+
+    public GameStatus getGameStatus() {
+        return gameStatus;
+    }
+
+    public Player getWinner() {
+        return winner;
+    }
+
     public void makeMove()
     {
         // this will move index in circles.
         this.indexOfLastMovedPlayer=(this.indexOfLastMovedPlayer+1)%this.players.size();
         Move move=this.players.get(indexOfLastMovedPlayer).makeMove(board);
-        this.moves.add(move);
-        int dimension=this.board.getBoard().size();
-        if(moves.size()==dimension*dimension) {
-            gameStatus=GameStatus.DRAW;
+        if(!move.getCell().isEmpty()){
+            System.out.println("wrong move");
+            this.indexOfLastMovedPlayer=(this.indexOfLastMovedPlayer-1+this.players.size())%this.players.size();
             return;
         }
+        move.getCell().setSymbol(move.getSymbol());
+        this.moves.add(move);
+        int dimension=this.board.getBoard().size();
+
         for(WinStrategy winStrategy:this.winStrategies)
         {
-            if(winStrategy.checkIfWin(this.board,move.getCell())){
+            if(winStrategy.checkIfWin(this.board,move.getCell(),move.getSymbol())){
                 gameStatus=GameStatus.WON;
                 winner=this.players.get(indexOfLastMovedPlayer);
                 break;
             }
         }
+//        if(moves.size()==dimension*dimension) {
+//            gameStatus=GameStatus.DRAW;
+//            return;
+//        }
+    }
+    public boolean undo() throws EmptyMovesUndoOperationException {
+        if(this.moves.size()==0)throw new EmptyMovesUndoOperationException();
+        this.indexOfLastMovedPlayer=(this.indexOfLastMovedPlayer-1+players.size())%players.size();
+        this.undoStrategy.undo(moves);
+        return true;
     }
     public static Builder getBuilder(){
         return new Builder();
+    }
+    public void printBoard(){
+        this.board.printBoard();
     }
     public static class Builder{
         private List<Player> players;
@@ -57,6 +83,7 @@ public class Game {
         private int dimension;
         private int minBoardSize=3;
         private int minNoOfPlayer=2;
+
         Builder(){
             this.players=new ArrayList<>();
             this.winStrategies=new ArrayList<>();
@@ -85,7 +112,7 @@ public class Game {
             Game game=new Game();
             Board board=new Board(this.dimension);
             game.board=board;
-            game.gameStatus=GameStatus.NOTSTARTED;
+            game.gameStatus=GameStatus.RUNNING;
             game.moves=new ArrayList<>();
             game.indexOfLastMovedPlayer=0;
             game.players.addAll(this.players);
@@ -98,12 +125,19 @@ public class Game {
             this.players.add(player);
             return this;
         }
-
-        public Builder add(WinStrategy winStrategy) {
-            this.winStrategies.add(winStrategy);
+        public Builder addAllPlayers(List<Player> players) {
+            this.players.addAll(players);
             return this;
         }
 
+        public Builder addWinStrategy(WinStrategy winStrategy) {
+            this.winStrategies.add(winStrategy);
+            return this;
+        }
+        public Builder addAllWinStrategy(List<WinStrategy> winStrategies) {
+            this.winStrategies.addAll(winStrategies);
+            return this;
+        }
         public Builder setUndoStrategy(UndoStrategy undoStrategy) {
             this.undoStrategy = undoStrategy;
             return this;
@@ -114,4 +148,6 @@ public class Game {
             return this;
         }
     }
+
+
 }

@@ -6,7 +6,7 @@ import models.Symbol;
 
 public class CornerWinStrategy implements WinStrategy{
     @Override
-    public boolean checkIfWin(Board board, Cell lastMovedCell) {
+    public boolean checkIfWin(Board board, Cell lastMovedCell,Symbol symbol) {
         return false;
     }
 }

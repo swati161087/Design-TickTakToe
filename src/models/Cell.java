@@ -4,6 +4,12 @@ public class Cell {
     private int row;
     private int col;
     private Symbol symbol;
+    public Cell(){}
+
+    public Cell(int row, int col) {
+        this.row = row;
+        this.col = col;
+    }
 
     public Cell setSymbol(Symbol symbol) {
         this.symbol = symbol;
@@ -28,5 +34,9 @@ public class Cell {
     }
     public boolean isEmpty(){
         return (symbol==null);
+    }
+    public void clearCell(){
+        this.symbol=null;
+        return;
     }
 }

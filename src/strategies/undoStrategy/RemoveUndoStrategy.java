@@ -6,7 +6,9 @@ import java.util.List;
 
 public class RemoveUndoStrategy implements UndoStrategy{
     @Override
-    public void undo(List<Move> moves) {
-
+    public Move undo(List<Move> moves) {
+        Move move=moves.remove(moves.size()-1);
+        move.getCell().clearCell();
+        return move;
     }
 }
