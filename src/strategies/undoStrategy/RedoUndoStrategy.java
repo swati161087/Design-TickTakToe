@@ -6,7 +6,8 @@ import java.util.List;
 
 public class RedoUndoStrategy implements UndoStrategy{
     @Override
-    public void undo(List<Move> moves) {
+    public Move undo(List<Move> moves) {
+        return  null;
 
     }
 }

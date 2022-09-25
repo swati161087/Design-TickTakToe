@@ -4,27 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90cd671e-6c9f-4f6c-b070-e5894b70c16d" name="Changes" comment="added models and strategies">
-      <change afterPath="$PROJECT_DIR$/src/enums/GameStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exceptions/InvalidParameterException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exceptions/MultipleBotException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/strategies/winStrategy/OrderOneWinStrategy.java" afterDir="false" />
+    <list default="true" id="90cd671e-6c9f-4f6c-b070-e5894b70c16d" name="Changes" comment="added code">
+      <change afterPath="$PROJECT_DIR$/src/GameSimulator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/GameController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exceptions/EmptyMovesUndoOperationException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Cell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Move.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/player/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/player/Bot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/player/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/player/Human.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/strategies/makeMoveStrategy/EasyMakeMoveStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/strategies/makeMoveStrategy/EasyMakeMoveStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/strategies/makeMoveStrategy/HardMakeMoveStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/strategies/makeMoveStrategy/HardMakeMoveStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/strategies/makeMoveStrategy/MakeMoveStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/strategies/makeMoveStrategy/MakeMoveStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/strategies/makeMoveStrategy/MakeMoveStrategyFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/factories/MakeMoveStrategyFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/strategies/makeMoveStrategy/MediumMakeMoveStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/strategies/makeMoveStrategy/MediumMakeMoveStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Symbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Symbol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/player/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/player/HumanPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/strategies/undoStrategy/RedoUndoStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/strategies/undoStrategy/RedoUndoStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/strategies/undoStrategy/RemoveUndoStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/strategies/undoStrategy/RemoveUndoStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/strategies/undoStrategy/UndoStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/strategies/undoStrategy/UndoStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/strategies/winStrategy/ColWinStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/strategies/winStrategy/ColWinStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/strategies/winStrategy/CornerWinStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/strategies/winStrategy/CornerWinStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/strategies/winStrategy/DiagonalWinStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/strategies/winStrategy/DiagonalWinStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/strategies/winStrategy/OrderOneWinStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/strategies/winStrategy/OrderOneWinStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/strategies/winStrategy/RowWinStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/strategies/winStrategy/RowWinStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/strategies/winStrategy/WinStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/strategies/winStrategy/WinStrategy.java" afterDir="false" />
     </list>
@@ -65,13 +61,23 @@
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="enums" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GameSimulator" />
+      <module name="Design TickTakToe" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -81,7 +87,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663999299612</updated>
-      <workItem from="1663999301878" duration="16793000" />
+      <workItem from="1663999301878" duration="27571000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1663999384779</created>
@@ -97,7 +103,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664002959050</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added code">
+      <created>1664037080213</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1664037080213</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,6 +130,18 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
     <MESSAGE value="added models and strategies" />
-    <option name="LAST_COMMIT_MESSAGE" value="added models and strategies" />
+    <MESSAGE value="added code" />
+    <option name="LAST_COMMIT_MESSAGE" value="added code" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/GameSimulator.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

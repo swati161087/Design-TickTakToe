@@ -7,9 +7,9 @@ import models.Symbol;
 
 import java.util.Scanner;
 
-public class Human extends Player{
+public class HumanPlayer extends Player{
     private String name;
-    Human(String name, Symbol symbol){
+    public HumanPlayer(String name, Symbol symbol){
 
         super(PlayerType.HUMAN,symbol);
         this.name=name;

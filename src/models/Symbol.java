@@ -2,12 +2,13 @@ package models;
 
 public class Symbol {
     private char c;
-    Symbol(char c)
+    public Symbol(char c)
     {
         this.c=c;
     }
 
-    public char getSymbol() {
+    public char getChar() {
         return c;
     }
+
 }
